@@ -14,18 +14,18 @@ if(isset($_GET['id'])){
   <div class="span12">
   <h1>Modifier un parking</h1>
   <p></p>
-  <form class="form-horizontal" action="parkings.php?id=<?php echo $id ?>">
+  <form class="form-horizontal" action="parkings_control.php?id=<?php echo $_GET['id'] ?>" method="post">
     <fieldset>
       <div class="control-group">
-        <label class="control-label" for="input01">Nom</label>
+        <label class="control-label" for="nom">Nom</label>
         <div class="controls">
-          <input type="text" class="input-xlarge" id="input01" value="<?php echo $park['nom'] ?>">
+          <input type="text" class="input-xlarge" id="nom" name="nom" value="<?php echo $park['nom'] ?>">
         </div>
       </div>
       <div class="control-group">
-        <label class="control-label" for="textarea">Adresse</label>
+        <label class="control-label" for="adresse">Adresse</label>
         <div class="controls">
-          <textarea class="input-xlarge" id="textarea" rows="3"><?php echo $park['adresse'] ?></textarea>
+          <textarea class="input-xlarge" id="adresse" name="adresse" rows="3"><?php echo $park['adresse'] ?></textarea>
         </div>
       </div>
       <div class="form-actions">
@@ -58,8 +58,8 @@ else {
       $vQuery=pg_query($vConn, $vSql);
       while ($park = pg_fetch_array($vQuery, null, PGSQL_ASSOC)) {
         echo '<tr>
-          <td><a href="parkings.php?id='.$park['id'].'">'.$park['id'].'</td>
-          <td>'.$park['nom'].'</td>
+          <td>'.$park['id'].'</td>
+          <td><a href="parkings.php?id='.$park['id'].'">'.$park['nom'].'</a></td>
           <td>'.$park['adresse'].'</td>
         </tr>';
       }
