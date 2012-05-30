@@ -1,5 +1,5 @@
 <?php
-
+require("inc/db.php");
 require("inc/header.php");
 
 if(isset($_GET['id'])){
