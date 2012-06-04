@@ -14,7 +14,7 @@ Parkings
 - Rajouter un bouton pour supprimer -> fait
 - Configurations des parkings -> Arthur
 - Tickets de paiement -> Arthur
-- Statistiques -> Soufien
+- Statistiques (grosses requêtes !) : taux d'occupation sur un an, en prenant en compte les abonnements, taux d'occupation par étage, taux d'occupation par place (schéma), nombre de voitures par jour -> Soufien
 
 Abonnements
 
