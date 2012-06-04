@@ -11,7 +11,7 @@ Parkings
 
 - Noveau Parking -> fait
 - Liste des parkings -> fait
-- Rajouter un bouton pour supprimer -> Arthur
+- Rajouter un bouton pour supprimer -> fait
 - Configurations des parkings -> Arthur
 - Tickets de paiement -> Arthur
 - Statistiques -> Soufien
