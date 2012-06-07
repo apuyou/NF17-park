@@ -38,30 +38,6 @@
 		</div>
 	</div>
 
-<<<<<<< HEAD
-	<div class="container-fluid">
-		<div class="row-fluid">
-			<div class="span3">
-				<div class="well sidebar-nav">
-					<ul class="nav nav-list">
-						<li class="nav-header">Parkings</li>
-						<li><a href="parkings.php?id=new">Nouveau parking</a></li>
-						<li><a href="parkings.php">Liste des parkings</a></li>
-						<li><a href="#">Configuration des parkings</a></li>
-						<li><a href="#">Tickets de paiement</a></li>
-						<li><a href="statistiques.php">Statistiques</a></li>
-						<li class="nav-header">Abonnements</li>
-						<!-- <li><a href="clients.php?id=new">Nouveau client</a></li> -->
-						<li><a href="clients.php">Clients</a></li>
-						<li><a href="#">Réglements</a></li>
-						<li><a href="#">Réservation de places</a></li>
-						<li class="nav-header">Employés</li>
-						<li><a href="#">Gestion des employés</a></li>              
-					</ul>
-				</div><!--/.well -->
-			</div><!--/span-->
-			<div class="span9">
-=======
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span3">
@@ -74,7 +50,7 @@
               <li><a href="#">Tickets de paiement</a></li>
               <li><a href="statistiques.php">Statistiques</a></li>
               <li class="nav-header">Abonnements</li>
-              <li><a href="#">Clients</a></li>
+              <li><a href="clients.php">Clients</a></li>
               <li><a href="#">Réglements</a></li>
               <li><a href="#">Réservation de places</a></li>
               <li class="nav-header">Employés</li>
@@ -83,4 +59,3 @@
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
->>>>>>> bb89a10c02b5c832105734252c321654ab5cd84d
