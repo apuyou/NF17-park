@@ -31,6 +31,9 @@ if(isset($_GET['id'])){
       <div class="form-actions">
         <button type="submit" class="btn btn-primary">Enregistrer</button>
         <a class="btn" href="parkings.php">Annuler</a>
+        <?php if($id > 0): ?>
+        <a class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer ce parking ?');" href="parkings_control.php?delete=<?php echo $id; ?>">Supprimer</a>
+        <?php endif; ?>
       </div>
     </fieldset>
   </form>
