@@ -48,7 +48,7 @@
               <li><a href="parkings.php">Liste des parkings</a></li>
               <li><a href="#">Configuration des parkings</a></li>
               <li><a href="#">Tickets de paiement</a></li>
-              <li><a href="#">Statistiques</a></li>
+              <li><a href="statistiques.php">Statistiques</a></li>
               <li class="nav-header">Abonnements</li>
               <li><a href="#">Clients</a></li>
               <li><a href="#">Réglements</a></li>
