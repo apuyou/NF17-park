@@ -20,4 +20,9 @@ elseif(intval($_GET['id']) > 0){
 	pg_query($vConn, $vSql);
 	header("Location: clients.php");
 }
+elseif(intval($_GET['delete']) > 0){
+  $id = intval($_GET['delete']);
+  pg_query($vConn, "DELETE FROM park_Personne WHERE ID = $id");
+  header("Location: clients.php");
+}
 ?>
