@@ -27,24 +27,20 @@ if(isset($_GET['id'])){
 					<div class="controls">
 						<input class="input-xlarge" id="prenom" name="prenom" value="<?php echo $park['prenom'] ?>">
 					</div>
-					<div class="control-group">
-						<label class="control-label" for="datenaissance">Date Naissance</label>
-						<div class="controls">
-							<input class="input-xlarge" id="datenaissance" name="datenaissance" value="<?php echo $park['datenaissance'] ?>">
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="type">Type</label>
-							<div class="controls">
-								<input class="input-xlarge" id="type" name="type" value="<?php echo $park['type'] ?>">
-							</div>
-						</div>
-						<div class="form-actions">
-							<button type="submit" class="btn btn-primary">Enregistrer</button>
-							<a class="btn" href="clients.php">Annuler</a>
-							<?php if($id > 0): ?>
-					        <a class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer cette client ?');" href="clients_control.php?delete=<?php echo $id; ?>">Supprimer</a>
-					        <?php endif; ?>
-						</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="datenaissance">Date Naissance</label>
+					<div class="controls">
+						<input class="input-xlarge" id="datenaissance" name="datenaissance" value="<?php echo $park['datenaissance'] ?>">
+					</div>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">Enregistrer</button>
+					<a class="btn" href="clients.php">Annuler</a>
+					<?php if($id > 0): ?>
+						<a class="btn btn-danger" onclick="return confirm('Voulez-vous vraiment supprimer cette client ?');" href="clients_control.php?delete=<?php echo $id; ?>">Supprimer</a>
+					<?php endif; ?>
+				</div>
 					</fieldset>
 				</form>
 			</div>
@@ -61,7 +57,6 @@ else {
 					<th>Nom</th>
 					<th>Prénom</th>
 					<th>Date de naissance</th>
-					<th>Type</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -75,7 +70,6 @@ else {
 					<td><a href="clients.php?id='.$park['id'].'">'.$park['nom'].'</a></td>
 					<td>'.$park['prenom'].'</td>
 					<td>'.$park['datenaissance'].'</td>
-					<td>'.$park['type'].'</td>
 				</tr>';
 			}
 			?>
