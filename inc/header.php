@@ -8,7 +8,7 @@
 	<meta name="author" content="">
 
 	<!-- Le styles -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap.css" rel="stylesheet">
 	<style type="text/css">
 	body {
 		padding-top: 60px;
@@ -51,7 +51,7 @@
               <li><a href="statistiques.php">Statistiques</a></li>
               <li class="nav-header">Abonnements</li>
               <li><a href="clients.php">Clients</a></li>
-              <li><a href="#">Réglements</a></li>
+              <li><a href="reglements.php">Réglements</a></li>
               <li><a href="#">Réservation de places</a></li>
               <li class="nav-header">Employés</li>
               <li><a href="#">Gestion des employés</a></li>              

@@ -4,7 +4,7 @@
       <hr>
 
       <footer>
-        <p>&copy; Company 2012</p>
+        <p>&copy; UTC 2012</p>
       </footer>
 
     </div><!--/.fluid-container-->
