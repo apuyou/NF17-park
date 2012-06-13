@@ -55,7 +55,8 @@
 						<li><a href="reglements.php">Réglements</a></li>
 						<li><a href="#">Réservation de places</a></li>
 						<li class="nav-header">Employés</li>
-						<li><a href="#">Gestion des employés</a></li>				 
+						<li><a href="employes.php?id=new">Nouvel employé</a></li>
+ 						<li><a href="employes.php">Gestion des employés</a></li>
 					</ul>
 				</div><!--/.well -->
 			</div><!--/span-->

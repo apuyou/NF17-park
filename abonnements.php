@@ -41,11 +41,26 @@ if(isset($_GET['id'])){
 					</div>
 				</div>
 				<div class="control-group">
+					<label class="control-label">Abonne2</label>
+					<div class="controls">
+						<select name="dropdown" class="btn dropdown-toggle" data-toggle="dropdown">
+							<?php
+							$vSql = "SELECT * FROM park_vabonne;";
+							$vQuery=pg_query($vConn, $vSql);
+							
+							while ($abonne = pg_fetch_array($vQuery, null, PGSQL_ASSOC)) {
+								echo '<option value ='.$abonne['id'].'>'.$abonne['prenom'].' '.$abonne['nom'].'</option>';
+							}?>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
 					<label class="control-label" for="place">Place</label>
 					<div class="controls">
 						<input class="input-xlarge" id="place" name="place" value="<?php echo $park['place'] ?>">
 					</div>
 				</div>
+
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary">Enregistrer</button>
 					<a class="btn" href="abonnements.php">Annuler</a>
@@ -74,7 +89,7 @@ else {
 				</tr>
 			</thead>
 			<tbody>
-				<?php
+			<?php
 			$vSql ="SELECT * FROM park_Abonnement;";
 			$vQuery=pg_query($vConn, $vSql);
 			while ($park = pg_fetch_array($vQuery, null, PGSQL_ASSOC)) {
