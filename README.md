@@ -19,6 +19,7 @@ Parkings
 Abonnements
 
 - Clients -> fait
+- Abonnements -> fait, à faire : changer le boolean de la place quand elle est occupée
 - Règlements -> fait (mais pas testé)
 - Réservation de places -> à faire
 
