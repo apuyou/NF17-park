@@ -34,33 +34,41 @@ if(isset($_GET['id'])){
 						<input class="input-xlarge" id="dateexpiration" name="dateexpiration" value="<?php echo $park['dateexpiration'] ?>">
 					</div>
 				</div>
+				
 				<div class="control-group">
-					<label class="control-label" for="abonne">Abonné</label>
+					<label class="control-label">Abonné</label>
 					<div class="controls">
-						<input class="input-xlarge" id="abonne" name="abonne" value="<?php echo $park['abonne'] ?>">
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Abonne2</label>
-					<div class="controls">
-						<select name="dropdown" class="btn dropdown-toggle" data-toggle="dropdown">
+						<select name="abonne" class="btn dropdown-toggle" data-toggle="abonne">
 							<?php
 							$vSql = "SELECT * FROM park_vabonne;";
 							$vQuery=pg_query($vConn, $vSql);
-							
 							while ($abonne = pg_fetch_array($vQuery, null, PGSQL_ASSOC)) {
-								echo '<option value ='.$abonne['id'].'>'.$abonne['prenom'].' '.$abonne['nom'].'</option>';
+								echo '<option value ='.$abonne['id'];
+								if ($abonne['id'] == $park['abonne']):
+									echo ' selected="selected"';
+								endif;
+								echo '>'.$abonne['prenom'].' '.$abonne['nom'].'</option>';
 							}?>
 						</select>
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="place">Place</label>
+					<label class="control-label">Place</label>
 					<div class="controls">
-						<input class="input-xlarge" id="place" name="place" value="<?php echo $park['place'] ?>">
+						<select name="place" class="btn dropdown-toggle" data-toggle="place">
+							<?php
+							$vSql = "SELECT park_place.id, park_place.local_id, park_place.etage, park_etage.etage, park_parking.nom FROM (park_place INNER JOIN park_etage ON park_place.etage = park_etage.id) INNER JOIN park_parking ON park_etage.parking = park_parking.id ORDER BY park_parking.nom, park_etage.etage, park_place.local_id;";
+							$vQuery=pg_query($vConn, $vSql);
+							while ($place = pg_fetch_array($vQuery, null, PGSQL_ASSOC)) {
+								echo '<option value ='.$place['id'];
+								if ($place['id'] == $park['place']):
+									echo ' selected="selected"';
+								endif;
+								echo '>Place '.$place['local_id'].', étage '.$place['etage'].', '.$place['nom'].'</option>';
+							}?>
+						</select>
 					</div>
 				</div>
-
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary">Enregistrer</button>
 					<a class="btn" href="abonnements.php">Annuler</a>
@@ -93,14 +101,22 @@ else {
 			$vSql ="SELECT * FROM park_Abonnement;";
 			$vQuery=pg_query($vConn, $vSql);
 			while ($park = pg_fetch_array($vQuery, null, PGSQL_ASSOC)) {
+				$abb_id = $park['abonne'];
+				$place_id = $park['place'];
+				$vSqlNom="SELECT * FROM park_personne WHERE id = $abb_id;";
+				$vQueryS=pg_query($vConn, $vSqlNom);
+				$abonneS = pg_fetch_array($vQueryS, null, PGSQL_ASSOC);
+				$vSql = "SELECT park_place.id, park_place.local_id, park_place.etage, park_etage.etage, park_parking.nom FROM (park_place INNER JOIN park_etage ON park_place.etage = park_etage.id) INNER JOIN park_parking ON park_etage.parking = park_parking.id where park_place.id = $place_id;";
+				$vQueryP=pg_query($vConn, $vSql);
+				$place = pg_fetch_array($vQueryP, null, PGSQL_ASSOC);
 				echo '
 				<tr>
 					<td><a href="abonnements.php?id='.$park['id'].'">'.$park['id'].'</a></td>
 					<td>'.$park['type'].'</td>
 					<td>'.$park['datesouscription'].'</td>
 					<td>'.$park['dateexpiration'].'</td>
-					<td>'.$park['abonne'].'</td>
-					<td>'.$park['place'].'</td>
+					<td>'.$abonneS['prenom'].' '.$abonneS['nom'].'</td>
+					<td>Place '.$place['local_id'].', étage '.$place['etage'].', '.$place['nom'].'</td>
 				</tr>';
 			}
 			?>

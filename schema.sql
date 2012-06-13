@@ -28,15 +28,16 @@ create table park_Poste (
 );
 
 create table park_Etage (
-	numero integer primary key,
+	id serial primary key,
+	etage integer not null,
 	parking integer references park_Parking(id),
 	maxNbPlaces integer not null,
-	unique(numero, parking)
+	unique(etage, parking)
 );
 
 create table park_Place (
 	id serial primary key,
-	etage integer references park_Etage(numero),
+	etage integer references park_Etage(id),
 	type varchar(8),
 	utilise boolean not null
 );

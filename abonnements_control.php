@@ -1,10 +1,10 @@
 <?php
 require("inc/db.php");
-
+// print_r($_POST);
 if($_GET['id'] == 'new'){
-	$nom = pg_escape_string($_POST['type']);
-	$prenom = pg_escape_string($_POST['datesouscription']);
-	$dateNaissance = pg_escape_string($_POST['dateexpiration']);
+	$type = pg_escape_string($_POST['type']);
+	$datesouscription = pg_escape_string($_POST['datesouscription']);
+	$dateexpiration = pg_escape_string($_POST['dateexpiration']);
 	$abonne = pg_escape_string($_POST['abonne']);
 	$place = pg_escape_string($_POST['place']);
 	$vSql ="INSERT INTO park_Abonnement (type, datesouscription, dateexpiration, abonne, place) VALUES ('$type', '$datesouscription', '$dateexpiration', '$abonne','$place');";
@@ -12,12 +12,12 @@ if($_GET['id'] == 'new'){
 	header("Location: abonnements.php");
 }
 elseif(intval($_GET['id']) > 0){
-	$nom = pg_escape_string($_POST['type']);
-	$prenom = pg_escape_string($_POST['datesouscription']);
-	$dateNaissance = pg_escape_string($_POST['dateexpiration']);
+	$type = pg_escape_string($_POST['type']);
+	$datesouscription = pg_escape_string($_POST['datesouscription']);
+	$dateexpiration = pg_escape_string($_POST['dateexpiration']);
 	$abonne = pg_escape_string($_POST['abonne']);
 	$place = pg_escape_string($_POST['place']);
-	$vSql ="UPDATE park_Abonnement SET type='$type', datesouscription='$datesouscription', dateexpiration='$dateexpiration', abonne='$abnne', place='$place' WHERE ID=$id;";
+	$vSql ="UPDATE park_Abonnement SET type='$type', datesouscription='$datesouscription', dateexpiration='$dateexpiration', abonne='$abonne', place='$place' WHERE ID=$id;";
 	pg_query($vConn, $vSql);
 	header("Location: abonnements.php");
 }
