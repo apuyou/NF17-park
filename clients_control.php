@@ -15,8 +15,7 @@ elseif(intval($_GET['id']) > 0){
 	$nom = pg_escape_string($_POST['nom']);
 	$prenom = pg_escape_string($_POST['prenom']);
 	$dateNaissance = pg_escape_string($_POST['datenaissance']);
-	$type = pg_escape_string($_POST['type']);
-	$vSql ="UPDATE park_Personne SET nom='$nom', prenom='$prenom', datenaissance='$datenaissance', type='$type' WHERE ID=$id;";
+	$vSql ="UPDATE park_Personne SET nom='$nom', prenom='$prenom', datenaissance='$datenaissance' WHERE ID=$id;";
 	pg_query($vConn, $vSql);
 	header("Location: clients.php");
 }

@@ -61,7 +61,7 @@ else {
 			</thead>
 			<tbody>
 				<?php
-			$vSql ="SELECT * FROM park_Personne WHERE type='abonne';";
+			$vSql ="SELECT * FROM park_vAbonne;";
 			$vQuery=pg_query($vConn, $vSql);
 			while ($park = pg_fetch_array($vQuery, null, PGSQL_ASSOC)) {
 				echo '

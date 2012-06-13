@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-asdasda
-=======
 <?php
 require("inc/db.php");
 require("inc/header.php");
@@ -33,4 +30,3 @@ require("inc/header.php");
 
 <?php
 require("inc/footer.php");
->>>>>>> bb89a10c02b5c832105734252c321654ab5cd84d

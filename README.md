@@ -18,8 +18,8 @@ Parkings
 
 Abonnements
 
-- Clients -> Viktor
-- Règlements -> Viktor
+- Clients -> fait
+- Règlements -> fait (mais pas testé)
 - Réservation de places -> à faire
 
 Employés
