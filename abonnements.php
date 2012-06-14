@@ -17,9 +17,10 @@ if(isset($_GET['id'])){
 		<form class="form-horizontal" action="abonnements_control.php?id=<?php echo $_GET['id'] ?>" method="post">
 			<fieldset>
 				<div class="control-group">
-					<label class="control-label" for="type">Type</label>
+					<label class="control-label" for ="type">Type</label>
 					<div class="controls">
-						<input type="text" class="input-xlarge" id="type" name="type" value="<?php echo $park['type'] ?>">
+						<input type="radio" name="type" value="mensuel"> Mensuel</input>
+						<input type="radio" name="type" value="annuel"> Annuel</input>
 					</div>
 				</div>
 				<div class="control-group">
