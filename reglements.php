@@ -79,16 +79,19 @@ else {
 			$vQuery=pg_query($vConn, $vSql);
 			while ($park = pg_fetch_array($vQuery, null, PGSQL_ASSOC)) {
 				$abb_id = $park['abonnement'];
+				$vSqlAbonne = "SELECT park_abonnement.id, park_personne.nom, park_personne.prenom,park_abonnement.type FROM park_abonnement INNER JOIN park_personne ON park_abonnement.abonne = park_personne.id WHERE park_abonnement.id = $abb_id;";
+				$vQueryAbonne=pg_query($vConn, $vSqlAbonne);
+				$abonne=pg_fetch_array($vQueryAbonne, null, PGSQL_ASSOC);
+				if (strcmp($park['type'], 'abb') == 0):
+					$type = 'Abonnement '.$abonne['type'];
+				endif;
 				echo '
 				<tr>
-					<td><a href="reglements.php?id='.$park['id'].'">'.$park['id'].'</a></td>
-					<td>'.$park['type'].'</td>
-					<td>'.$park['montant'].'</td>
+					<td>'.$park['id'].'</td>
+					<td>'.$type.'</td>
+					<td>'.$park['montant'].' €</td>
 					<td>'.$park['dateenregistrement'].'</td>
 					<td>'.$park['ticket'].'</td>';
-					$vSqlAbonne = "SELECT park_abonnement.id, park_personne.nom, park_personne.prenom,park_abonnement.type FROM park_abonnement INNER JOIN park_personne ON park_abonnement.abonne = park_personne.id WHERE park_abonnement.id = $abb_id;";
-					$vQueryAbonne=pg_query($vConn, $vSqlAbonne);
-					$abonne=pg_fetch_array($vQueryAbonne, null, PGSQL_ASSOC);
 					// print_r($abonne);
 					echo '<td><a href="abonnements.php?id='.$abonne['id'].'">'.$abonne['id'].', '.$abonne['prenom'].' '.$abonne['nom'].'</a></td>
 				</tr>';
