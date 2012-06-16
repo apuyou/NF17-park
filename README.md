@@ -9,8 +9,8 @@ PHP+pgSQL
 
 Parkings
 
-- Noveau Parking -> fait
-- Liste des parkings -> fait
+- Noveau Parking. **Il faudra definir le nombre des étages, nbmaxplace pour chaque étage et rajouter les places pour chaque étage.**-> Arthur
+- Liste des parkings. **Il sera bien si on peut voir les étages et leur nbmaxplace** -> Arthur
 - Rajouter un bouton pour supprimer -> fait
 - Configurations des parkings -> Arthur
 - Tickets de paiement -> Arthur
