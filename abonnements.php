@@ -44,7 +44,6 @@ if(isset($_GET['id'])){
 						$vSqlReglement = "SELECT * FROM park_reglement WHERE abonnement=$id;";
 						$vQueryReglement = pg_query($vConn, $vSqlReglement);
 						$regl = pg_fetch_array($vQueryReglement);
-						// $montant = pg_escape_	string();
 						?>
 						<input class="input-xlarge" id="montant" name="montant" value="<?php echo $regl['montant'] ?>">
 					</div>

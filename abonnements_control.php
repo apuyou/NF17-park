@@ -17,9 +17,9 @@ if($_GET['id'] == 'new') {
 	$id = $abb['id'];
 	$vSqlReglement = "INSERT INTO park_reglement (type, montant, dateenregistrement, abonnement) VALUES ('abb', '$montant', '$date', '$id');";
 	pg_query($vConn, $vSqlReglement);
-	header("Location: abonnements.php");
 	$vSqlPark ="UPDATE park_place SET utilise='t' WHERE id = $place;";
 	pg_query($vConn, $vSqlPark);
+	header("Location: abonnements.php");
 }
 elseif(intval($_GET['id']) > 0) {
 	$type = pg_escape_string($_POST['type']);
@@ -32,11 +32,11 @@ elseif(intval($_GET['id']) > 0) {
 	pg_query($vConn, $vSql);
 	$vSqlReglement = "UPDATE park_reglement SET montant='$montant' WHERE abonnement = '$id';";
 	pg_query($vConn, $vSqlReglement);
-	header("Location: abonnements.php");
 	$vSqlPark ="UPDATE park_place SET utilise='f' WHERE id = $oldplace;";
 	pg_query($vConn, $vSqlPark);
 	$vSqlParkS = "UPDATE park_place SET utilise='t' WHERE id = $place;";
 	pg_query($vConn, $vSqlParkS);
+	header("Location: abonnements.php");
 }
 elseif(intval($_GET['delete']) > 0) {
 	$id = intval($_GET['delete']);

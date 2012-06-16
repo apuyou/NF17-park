@@ -82,8 +82,14 @@ else {
 				$vSqlAbonne = "SELECT park_abonnement.id, park_personne.nom, park_personne.prenom,park_abonnement.type FROM park_abonnement INNER JOIN park_personne ON park_abonnement.abonne = park_personne.id WHERE park_abonnement.id = $abb_id;";
 				$vQueryAbonne=pg_query($vConn, $vSqlAbonne);
 				$abonne=pg_fetch_array($vQueryAbonne, null, PGSQL_ASSOC);
+				$tick_id = $park['ticket'];
+				$vSqlTick = "SELECT park_ticket.id, park_parking.nom FROM park_ticket INNER JOIN park_parking ON park_ticket.parking = park_parking.id WHERE park_ticket.id = $tick_id;";
+				$vQueryTick=pg_query($vConn, $vSqlTick);
+				$tick=pg_fetch_array($vQueryTick, null, PGSQL_ASSOC);
 				if (strcmp($park['type'], 'abb') == 0):
 					$type = 'Abonnement '.$abonne['type'];
+				elseif (strcmp($park['type'], 'ticket') == 0):
+					$type = 'Ticket';
 				endif;
 				echo '
 				<tr>
@@ -91,12 +97,19 @@ else {
 					<td>'.$type.'</td>
 					<td>'.$park['montant'].' €</td>
 					<td>'.$park['dateenregistrement'].'</td>
-					<td>'.$park['ticket'].'</td>';
-					// print_r($abonne);
-					echo '<td><a href="abonnements.php?id='.$abonne['id'].'">'.$abonne['id'].', '.$abonne['prenom'].' '.$abonne['nom'].'</a></td>
+					<td>';
+					if (strcmp($park['type'], 'ticket') == 0):
+						echo '<a href="tickets.php?id='.$tick['id'].'">'.$tick['id'].', à '.$tick['nom'].'</a>';
+					endif;
+					echo '</td>
+					<td>';
+					if (strcmp($park['type'], 'abb') == 0):
+						echo '<a href="abonnements.php?id='.$abonne['id'].'">'.$abonne['id'].', '.$abonne['prenom'].' '.$abonne['nom'].'</a>';
+					endif;
+					echo '
+					</td>
 				</tr>';
 			}
-								// echo '<td>'.$park['abonnement'].'</td>
 			?>
 		</tbody>
 	</table>
