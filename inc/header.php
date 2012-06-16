@@ -46,7 +46,7 @@
 						<li class="nav-header">Parkings</li>
 						<li><a href="parkings.php?id=new">Nouveau parking</a></li>
 						<li><a href="parkings.php">Liste des parkings</a></li>
-						<li><a href="#">Tickets de paiement</a></li>
+						<li><a href="tickets.php">Tickets de paiement</a></li>
 						<li><a href="statistiques.php">Statistiques</a></li>
 						<li class="nav-header">Abonnements</li>
 						<li><a href="clients.php">Clients</a></li>
