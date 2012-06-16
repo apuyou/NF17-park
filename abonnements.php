@@ -1,4 +1,5 @@
 <?php
+session_start();
 require("inc/db.php");
 require("inc/header.php");
 
@@ -19,8 +20,21 @@ if(isset($_GET['id'])){
 				<div class="control-group">
 					<label class="control-label" for ="type">Type</label>
 					<div class="controls">
-						<input type="radio" name="type" value="mensuel"> Mensuel</input>
-						<input type="radio" name="type" value="annuel"> Annuel</input>
+						<?php
+						$vSqlAb = "SELECT * FROM park_abonnement WHERE id = $id;";
+						$vQueryAb=pg_query($vConn,$vSqlAb);
+						$abb=pg_fetch_array($vQueryAb);
+						echo '<input type="radio" name="type" value="mensuel"';
+						if (strcmp($abb['type'], 'mensuel') == 0):
+							echo ' checked';
+						endif;
+						echo '> Mensuel</input>';
+						echo '<input type="radio" name="type" value="annuel"';
+						if (strcmp($abb['type'], 'annuel') == 0):
+							echo ' checked';
+						endif;
+						echo '> Annuel</input>';
+						?>
 					</div>
 				</div>
 				<div class="control-group">
@@ -58,18 +72,30 @@ if(isset($_GET['id'])){
 					<div class="controls">
 						<select name="place" class="btn dropdown-toggle" data-toggle="place">
 							<?php
-							$vSql = "SELECT park_place.id, park_place.local_id, park_place.etage, park_etage.etage, park_parking.nom FROM (park_place INNER JOIN park_etage ON park_place.etage = park_etage.id) INNER JOIN park_parking ON park_etage.parking = park_parking.id ORDER BY park_parking.nom, park_etage.etage, park_place.local_id;";
+							$vSql = "SELECT park_place.id, park_place.local_id, park_place.etage, park_place.utilise, park_place.type, park_etage.etage, park_parking.nom FROM (park_place INNER JOIN park_etage ON park_place.etage = park_etage.id) INNER JOIN park_parking ON park_etage.parking = park_parking.id ORDER BY park_parking.nom, park_etage.etage, park_place.local_id;";
 							$vQuery=pg_query($vConn, $vSql);
 							while ($place = pg_fetch_array($vQuery, null, PGSQL_ASSOC)) {
 								echo '<option value ='.$place['id'];
 								if ($place['id'] == $park['place']):
 									echo ' selected="selected"';
+									$_SESSION['oldplace'] = $place['id'];
+									echo '>** Place '.$place['local_id'].', étage '.$place['etage'].', '.$place['nom'];
+									echo ' **</option>';
+								elseif ($place['utilise'] == 't'): {
+									echo '';
+								}
+								else:
+								echo '>Place '.$place['local_id'].', étage '.$place['etage'].', '.$place['nom'];
+								if (strcmp($place['type'], 'handicap') == 0):
+									echo ' (handicap)';
 								endif;
-								echo '>Place '.$place['local_id'].', étage '.$place['etage'].', '.$place['nom'].'</option>';
+								echo '</option>';
+								endif;
 							}?>
 						</select>
 					</div>
 				</div>
+				
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary">Enregistrer</button>
 					<a class="btn" href="abonnements.php">Annuler</a>
