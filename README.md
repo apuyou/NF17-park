@@ -19,10 +19,15 @@ Parkings
 Abonnements
 
 - Clients -> fait
-- Abonnements -> fait, à faire : changer le boolean de la place quand elle est occupée
+- Abonnements -> fait
 - Règlements -> fait (mais pas testé)
 - Réservation de places -> à faire
 
 Employés
 
 - Gestion des employés -> Amandine
+- il faut rajouter la Poste d'une manière
+
+Soutenance
+
+- Faire le ppt (doit contenir un présentation de la parties du supermarché, et un bref présentation du parking)
