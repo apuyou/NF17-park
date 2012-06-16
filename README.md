@@ -9,19 +9,19 @@ PHP+pgSQL
 
 Parkings
 
-- Noveau Parking. **Il faudra definir le nombre des étages, nbmaxplace pour chaque étage et rajouter les places pour chaque étage.**-> Arthur
-- Liste des parkings. **Il sera bien si on peut voir les étages et leur nbmaxplace** -> Arthur
+- Noveau Parking -> fait
+- Liste des parkings -> fait
 - Rajouter un bouton pour supprimer -> fait
-- Configurations des parkings -> Arthur
-- Tickets de paiement -> Arthur
+- Configurations des parkings -> fait
+- Tickets de paiement -> fait
 - Statistiques (grosses requêtes !) : taux d'occupation sur un an, en prenant en compte les abonnements, taux d'occupation par étage, taux d'occupation par place (schéma), nombre de voitures par jour -> Soufien
 
 Abonnements
 
 - Clients -> fait
 - Abonnements -> fait
-- Règlements -> fait (mais pas testé)
-- Réservation de places -> à faire
+- Règlements -> fait **(mais pas testé)**
+- Réservation de places -> **à faire**
 
 Employés
 

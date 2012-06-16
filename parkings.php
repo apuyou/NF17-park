@@ -53,6 +53,7 @@ else {
         <th>ID</th>
         <th>Nom</th>
         <th>Adresse</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -62,8 +63,9 @@ else {
       while ($park = pg_fetch_array($vQuery, null, PGSQL_ASSOC)) {
         echo '<tr>
           <td>'.$park['id'].'</td>
-          <td><a href="parkings.php?id='.$park['id'].'">'.$park['nom'].'</a></td>
+          <td>'.$park['nom'].'</td>
           <td>'.$park['adresse'].'</td>
+          <td><a href="parkings.php?id='.$park['id'].'" class="btn">Modifier</a> <a href="configpark.php?id='.$park['id'].'" class="btn">Configurer</a></td>
         </tr>';
       }
       ?>
