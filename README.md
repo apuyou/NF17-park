@@ -20,7 +20,7 @@ Abonnements
 
 - Clients -> fait
 - Abonnements -> fait
-- Règlements -> fait **(mais pas testé)**
+- Règlements -> fait
 - Réservation de places -> **à faire**
 
 Employés
