@@ -7,20 +7,22 @@ require("inc/header.php");
 
   <h2>Chiffres clés</h2>
   <?php
-    $vSql = "SELECT pe.parking, COUNT(pp.id) FROM park_place pp
+    $vSql = "SELECT SUM(count.c) Total, ROUND(AVG(count.c),2) Avg, SUM(counthandicap.c) Handicap, ROUND(SUM(counthandicap.c)/SUM(count.c)*100,2) AS PHandicap
+      FROM (SELECT pe.parking, COUNT(pp.id) c FROM park_place pp
       INNER JOIN park_etage pe ON pe.id = pp.etage
-      GROUP BY pe.parking;";
+      GROUP BY pe.parking) count
+      INNER JOIN (SELECT pe.parking, COUNT(pp.id) c FROM park_place pp
+      INNER JOIN park_etage pe ON pe.id = pp.etage
+      WHERE pp.type = 'handicap'
+      GROUP BY pe.parking) counthandicap ON counthandicap.parking = count.parking;";
     $vQuery = pg_query($vConn, $vSql);
     $stats1 = pg_fetch_array($vQuery);
-    
-    $txOccupation = round(($stats1['placesabonnes']+$stats2['nbtickets'])/$stats1['totalplaces']*100, 2);
   ?>
   <p>Ces données sont calculées sur l'ensemble des parkings et avec toutes les données présentes dans le système.</p>
   <ul>
-    <li>Nombre de places handicapés : (%)</li>
-    <li>Nombre de places total : </li>
-    <li>Nombre moyen de places par parking</li>
-    <li>Nombre moyen de places par étage</li>
+    <li>Nombre de places handicapés : <?php echo $stats1['handicap'] ?> (<?php echo $stats1['phandicap'] ?> %)</li>
+    <li>Nombre de places total : <?php echo $stats1['total'] ?></li>
+    <li>Nombre moyen de places par parking : <?php echo $stats1['avg'] ?></li>
   </ul>
   
   <h2>Taux d'occupation à un moment donné</h2>
@@ -55,7 +57,10 @@ require("inc/header.php");
     $vQuery = pg_query($vConn, $vSql);
     $stats2 = pg_fetch_array($vQuery);
     
-    $txOccupation = round(($stats1['placesabonnes']+$stats2['nbtickets'])/$stats1['totalplaces']*100, 2);
+    if($stats1['totalplaces'] > 0)
+      $txOccupation = round(($stats1['placesabonnes']+$stats2['nbtickets'])/$stats1['totalplaces']*100, 2);
+    else
+      $txOccupation = 0;
   ?>
   <ul>
     <li>Total de places disponibles : <?php echo $stats1['totalplaces'] ?></li>
