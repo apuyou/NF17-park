@@ -62,6 +62,7 @@ else {
 					<th>Nom</th>
 					<th>Prénom</th>
 					<th>Date de naissance</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -72,9 +73,10 @@ else {
 				echo '
 				<tr>
 					<td>'.$park['id'].'</td>
-					<td><a href="clients.php?id='.$park['id'].'">'.$park['nom'].'</a></td>
+					<td>'.$park['nom'].'</td>
 					<td>'.$park['prenom'].'</td>
 					<td>'.$park['datenaissance'].'</td>
+					<td><a href="clients.php?id='.$park['id'].'" class="btn">Modifier</a></td>
 				</tr>';
 			}
 			?>

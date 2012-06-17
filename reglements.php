@@ -99,12 +99,12 @@ else {
 					<td>'.$park['dateenregistrement'].'</td>
 					<td>';
 					if (strcmp($park['type'], 'ticket') == 0):
-						echo '<a href="tickets.php?id='.$tick['id'].'">'.$tick['id'].', à '.$tick['nom'].'</a>';
+						echo '<a href="tickets.php?id='.$tick['id'].'" class="btn">'.$tick['id'].', à '.$tick['nom'].'</a>';
 					endif;
 					echo '</td>
 					<td>';
 					if (strcmp($park['type'], 'abb') == 0):
-						echo '<a href="abonnements.php?id='.$abonne['id'].'">'.$abonne['id'].', '.$abonne['prenom'].' '.$abonne['nom'].'</a>';
+						echo '<a href="abonnements.php?id='.$abonne['id'].'" class="btn">'.$abonne['id'].', '.$abonne['prenom'].' '.$abonne['nom'].'</a>';
 					endif;
 					echo '
 					</td>
