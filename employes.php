@@ -34,6 +34,39 @@ if(isset($_GET['id'])){
 						<input class="input-xlarge" id="datenaissance" name="datenaissance" value="<?php echo $park['datenaissance'] ?>">
 					</div>
 				</div>
+				
+				<div class="control-group">
+					<label class="control-label">Parking</label>
+					<div class="controls">
+						<select name="parking" class="btn dropdown-toggle" data-toggle="parking">
+							<?php
+							$vSqlP = "SELECT * FROM park_parking;";
+							$vQueryP=pg_query($vConn, $vSqlP);
+							while ($parking = pg_fetch_array($vQueryP, null, PGSQL_ASSOC)) {
+								echo '<option value ='.$parking['id'];
+								if ($parking['id'] == $park['parking']):
+									echo ' selected="selected"';
+								endif;
+								echo '>'.$parking['nom'].'</option>';
+							}?>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<?php
+					if($park['id']> 0):
+						$emp_id = $park['id'];
+						$vSqlE = "SELECT occupation FROM park_poste WHERE employe = $emp_id;";
+						$vQueryE = pg_query($vConn, $vSqlE);
+						$poste_arr = pg_fetch_array($vQueryE, null, PGSQL_ASSOC);
+						$poste = $poste_arr['occupation'];
+					endif;
+					?>
+					<label class="control-label" for="poste">Poste</label>
+					<div class="controls">
+						<input class="input-xlarge" id="poste" name="poste" value="<?php echo $poste ?>">
+					</div>
+				</div>
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary">Enregistrer</button>
 					<a class="btn" href="employes.php">Annuler</a>

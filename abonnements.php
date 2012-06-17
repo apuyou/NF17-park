@@ -24,7 +24,7 @@ if(isset($_GET['id'])){
 						$vSqlAb = "SELECT type FROM park_abonnement WHERE id = $id;";
 						$vQueryAb=pg_query($vConn,$vSqlAb);
 						$abb=pg_fetch_array($vQueryAb);
-						echo '<input type="radio" name="type" value="mensuel" class="control-label"';
+						echo '<input type="radio" name="type" value="mensuel" ';
 						if (strcmp($abb['type'], 'mensuel') == 0):
 							echo ' checked';
 						endif;
