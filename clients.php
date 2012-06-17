@@ -31,12 +31,7 @@ if(isset($_GET['id'])){
 				<div class="control-group">
 					<label class="control-label" for="datenaissance">Date Naissance</label>
 					<div class="controls">
-						<?php if($id == 'new'): ?>
-							<input class="input-xlarge" id="datenaissance" name="datenaissance" value=
-							"aaaa-mm-jj">
-						<?php else: ?>
 							<input class="input-xlarge" id="datenaissance" name="datenaissance" value="<?php echo $park['datenaissance'] ?>">
-						<?php endif; ?>
 					</div>
 				</div>
 				<div class="form-actions">
@@ -62,6 +57,7 @@ else {
 					<th>Nom</th>
 					<th>Prénom</th>
 					<th>Date de naissance</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -72,9 +68,10 @@ else {
 				echo '
 				<tr>
 					<td>'.$park['id'].'</td>
-					<td><a href="clients.php?id='.$park['id'].'">'.$park['nom'].'</a></td>
+					<td>'.$park['nom'].'</td>
 					<td>'.$park['prenom'].'</td>
 					<td>'.$park['datenaissance'].'</td>
+					<td><a href="clients.php?id='.$park['id'].'" class="btn">Modifier</a></td>
 				</tr>';
 			}
 			?>

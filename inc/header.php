@@ -44,10 +44,11 @@
 						<li><a href="tickets.php">Tickets de paiement</a></li>
 						<li><a href="statistiques.php">Statistiques</a></li>
 						<li class="nav-header">Abonnements</li>
-						<li><a href="clients.php">Clients</a></li>
+						<li><a href="clients.php?id=new">Nouveau client</a></li>
+						<li><a href="clients.php">Liste des clients</a></li>
+						<li><a href="abonnements.php?id=new">Nouvel abonnement</a></li>
 						<li><a href="abonnements.php">Liste des abonnements</a></li>
-						<li><a href="reglements.php">Réglements</a></li>
-						<li><a href="#">Réservation de places</a></li>
+						<li><a href="reglements.php">Liste des réglements</a></li>
 						<li class="nav-header">Employés</li>
 						<li><a href="employes.php?id=new">Nouvel employé</a></li>
  						<li><a href="employes.php">Gestion des employés</a></li>
