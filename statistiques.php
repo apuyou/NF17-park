@@ -6,11 +6,24 @@ require("inc/header.php");
   <h1>Statistiques</h1>
 
   <h2>Chiffres clés</h2>
-  nombre de places handicapés (%)
-  nombre de places total/moyen par parking
+  <?php
+    $vSql = "SELECT pe.parking, COUNT(pp.id) FROM park_place pp
+      INNER JOIN park_etage pe ON pe.id = pp.etage
+      GROUP BY pe.parking;";
+    $vQuery = pg_query($vConn, $vSql);
+    $stats1 = pg_fetch_array($vQuery);
+    
+    $txOccupation = round(($stats1['placesabonnes']+$stats2['nbtickets'])/$stats1['totalplaces']*100, 2);
+  ?>
+  <p>Ces données sont calculées sur l'ensemble des parkings et avec toutes les données présentes dans le système.</p>
+  <ul>
+    <li>Nombre de places handicapés : (%)</li>
+    <li>Nombre de places total : </li>
+    <li>Nombre moyen de places par parking</li>
+    <li>Nombre moyen de places par étage</li>
+  </ul>
   
-  
-  <h2>Taux d'occupation</h2>
+  <h2>Taux d'occupation à un moment donné</h2>
   <form class="well form-inline" method="post" action="statistiques.php">
     <select name="parking">
     <?php
@@ -24,7 +37,7 @@ require("inc/header.php");
     }
     ?>
     </select>
-    <input type="text" name="date" value="<?php echo $_POST['date'] ?>" placeholder="Date" />
+    <input type="text" name="date" value="<?php echo $_POST['date'] ?>" placeholder="Date/heure" />
     <button type="submit" class="btn" name="occupation">Calculer !</button>
   </form>
   <?php
@@ -51,12 +64,33 @@ require("inc/header.php");
     <li><b>Taux d'occupation : <?php echo $txOccupation ?> %</b></li>
   </ul>
   <?php endif; ?>
+  
   <h2>CA annuel</h2>
   <form class="well form-inline" method="post" action="statistiques.php">
     Année sur laquelle il faut calculer le CA :
-    <input type="text" name="ca" value="<?php echo $_POST['ca'] ?>" />
-    <button type="submit" class="btn">Calculer !</button>    
+    <input type="text" name="annee" value="<?php echo $_POST['annee'] ?>" />
+    <button type="submit" name="ca" class="btn">Calculer !</button>    
   </form>
+  <?php
+  if(isset($_POST['ca'])):
+    $annee = pg_escape_string($_POST['annee']);
+    $vSql = "SELECT type, SUM(montant) FROM park_reglement
+      WHERE EXTRACT(YEAR FROM dateenregistrement) = $annee
+      GROUP BY type";
+    $vQuery = pg_query($vConn, $vSql);
+    $ca = array();
+    while($line = pg_fetch_array($vQuery)){
+      $ca[$line['type']] = $line['sum'];
+    }
+    $total = $ca['abb'] + $ca['ticket'];
+  ?>
+  <ul>
+    <li>CA abonnements: <?php echo number_format($ca['abb'], 2, ',', ' ') ?> €</li>
+    <li>CA tickets : <?php echo number_format($ca['ticket'], 2, ',', ' ') ?> €</li>
+    <li><b>CA total : <?php echo number_format($total, 2, ',', ' ') ?> €</b></li>
+  </ul>
+  <?php endif; ?>
+  
 </div>
 
 <?php
