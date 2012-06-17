@@ -14,18 +14,18 @@ Parkings
 - Rajouter un bouton pour supprimer -> fait
 - Configurations des parkings -> fait
 - Tickets de paiement -> fait
-- Statistiques (grosses requêtes !) : taux d'occupation sur un an, en prenant en compte les abonnements, taux d'occupation par étage, taux d'occupation par place (schéma), nombre de voitures par jour -> Soufien
+- Statistiques (grosses requêtes !) -> fait
 
 Abonnements
 
 - Clients -> fait
 - Abonnements -> fait
 - Règlements -> fait
-- Réservation de places -> **à faire**
+- Réservation de places -> fait dans abonnements
 
 Employés
 
-- Gestion des employés -> Amandine
+- Gestion des employés -> fait
 - il faut rajouter la Poste d'une manière
 
 Soutenance
