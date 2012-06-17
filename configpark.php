@@ -150,7 +150,7 @@ else {
 
           while ($etage = pg_fetch_array($vQuery, null, PGSQL_ASSOC)) {
             echo '<tr>
-              <td><a href="configpark.php?id='.$id.'&etage='.$etage['id'].'">'.$etage['etage'].'</a></td>
+              <td><a class="btn" href="configpark.php?id='.$id.'&etage='.$etage['id'].'">'.$etage['etage'].'</a></td>
               <td>'.$etage['places'].'</td>
               <td>'.$etage['maxnbplaces'].'</td>
               <td><a class="btn" href="configpark.php?etageid='.$etage['id'].'">Modifier</a></td>

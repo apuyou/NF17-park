@@ -90,6 +90,9 @@ else {
 					<th>Nom</th>
 					<th>Prénom</th>
 					<th>Date de naissance</th>
+					<th>Poste</th>
+					<th>Lieu de travail</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -97,12 +100,19 @@ else {
 			$vSql ="SELECT * FROM park_vEmploye;";
 			$vQuery=pg_query($vConn, $vSql);
 			while ($park = pg_fetch_array($vQuery, null, PGSQL_ASSOC)) {
+				$emp_id = $park['id'];
+				$vSqlP = "SELECT park_poste.occupation, park_parking.nom FROM park_poste INNER JOIN park_parking ON park_poste.parking = park_parking.id WHERE park_poste.employe=$emp_id;";
+				$vQueryP = pg_query($vConn, $vSqlP);
+				$poste = pg_fetch_array($vQueryP, null, PGSQL_ASSOC);
 				echo '
 				<tr>
 					<td>'.$park['id'].'</td>
-					<td><a href="employes.php?id='.$park['id'].'">'.$park['nom'].'</a></td>
+					<td>'.$park['nom'].'</td>
 					<td>'.$park['prenom'].'</td>
 					<td>'.$park['datenaissance'].'</td>
+					<td>'.$poste['occupation'].'</td>
+					<td>'.$poste['nom'].'</td>
+					<td><a href="employes.php?id='.$park['id'].'" class="btn">Modifier</a></td>
 				</tr>';
 			}
 			?>

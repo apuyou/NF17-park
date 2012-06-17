@@ -60,7 +60,6 @@ if(isset($_GET['id'])){
 						<input class="input-xlarge" id="dateexpiration" name="dateexpiration" value="<?php echo $park['dateexpiration'] ?>">
 					</div>
 				</div>
-				
 				<div class="control-group">
 					<label class="control-label">Abonné</label>
 					<div class="controls">
@@ -100,11 +99,9 @@ if(isset($_GET['id'])){
 								endif;
 							}
 							?>
-							<option>Hej</option>
 						</select>
 					</div>
 				</div>
-				
 				<div class="form-actions">
 					<button type="submit" class="btn btn-primary">Enregistrer</button>
 					<a class="btn" href="abonnements.php">Annuler</a>
