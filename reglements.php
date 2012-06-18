@@ -61,14 +61,14 @@ if(isset($_GET['id'])){
 else {
 ?>
 	<div class="span12">
-		<h1>Liste des reglements</h1>
+		<h1>Liste des règlements</h1>
 		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>ID</th>
 					<th>Type</th>
 					<th>Montant</th>
-					<th>Date enregistre</th>
+					<th>Date d'enregistrement</th>
 					<th>Ticket</th>
 					<th>Abonnement</th>
 				</tr>
