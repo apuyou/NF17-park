@@ -12,7 +12,7 @@ if(isset($_GET['id'])){
   }
 ?>
   <div class="span12">
-  <h1>Modifier un parking</h1>
+  <h1>Éditer un parking</h1>
   <p></p>
   <form class="form-horizontal" action="parkings_control.php?id=<?php echo $_GET['id'] ?>" method="post">
     <fieldset>

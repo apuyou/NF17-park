@@ -48,7 +48,7 @@
 						<li><a href="clients.php">Liste des clients</a></li>
 						<li><a href="abonnements.php?id=new">Nouvel abonnement</a></li>
 						<li><a href="abonnements.php">Liste des abonnements</a></li>
-						<li><a href="reglements.php">Liste des réglements</a></li>
+						<li><a href="reglements.php">Liste des règlements</a></li>
 						<li class="nav-header">Employés</li>
 						<li><a href="employes.php?id=new">Nouvel employé</a></li>
  						<li><a href="employes.php">Gestion des employés</a></li>
