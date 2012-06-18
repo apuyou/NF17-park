@@ -12,7 +12,7 @@ if(isset($_GET['id'])){
 	}
 	?>
 	<div class="span12">
-		<h1>Modifier un employé</h1>
+		<h1>Éditer un employé</h1>
 		<p></p>
 		<form class="form-horizontal" action="employes_control.php?id=<?php echo $_GET['id'] ?>" method="post">
 			<fieldset>
@@ -29,7 +29,7 @@ if(isset($_GET['id'])){
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="datenaissance">Date Naissance</label>
+					<label class="control-label" for="datenaissance">Date de naissance</label>
 					<div class="controls">
 						<input class="input-xlarge" id="datenaissance" name="datenaissance" value="<?php echo $park['datenaissance'] ?>">
 					</div>
