@@ -17,38 +17,29 @@ require("inc/header.php");
 			</thead>
 			<tbody>
 				<?php
-			$vSql ="SELECT * FROM park_reglement;";
+			$vSql ="SELECT pr.type, pr.id, ppe.nom, ppe.prenom, pa.type AS typeabo, pt.id AS tickid, pa.id AS aboid, pr.montant, pr.dateenregistrement, ppa.nom AS parking FROM park_reglement pr
+			LEFT JOIN park_abonnement pa ON pa.ID = pr.abonnement
+			LEFT JOIN park_personne ppe ON ppe.id = pa.abonne
+			LEFT JOIN park_ticket pt ON pt.id = pr.ticket
+			LEFT JOIN park_parking ppa ON ppa.id = pt.parking
+			;";
 			$vQuery=pg_query($vConn, $vSql);
 			while ($park = pg_fetch_array($vQuery, null, PGSQL_ASSOC)) {
-				if (strcmp($park['type'], 'abb') == 0):
-					$type = 'Abonnement '.$abonne['type'];
-                                        $abb_id = $park['abonnement'];
-                                        $vSqlAbonne = "SELECT park_abonnement.id, park_personne.nom, park_personne.prenom,park_abonnement.type FROM park_abonnement INNER JOIN park_personne ON park_abonnement.abonne = park_personne.id WHERE park_abonnement.id = $abb_id;"; 
-                                        $vQueryAbonne=pg_query($vConn, $vSqlAbonne);
-                                        $abonne=pg_fetch_array($vQueryAbonne, null, PGSQL_ASSOC);
-                                elseif (strcmp($park['type'], 'ticket') == 0):
-					$type = 'Ticket';
-               				$tick_id = $park['ticket'];
-                                        $vSqlTick = "SELECT park_ticket.id, park_parking.nom FROM park_ticket INNER JOIN park_parking ON park_ticket.parking = park_parking.id WHERE park_ticket.id = $tick_id;";
-                                        $vQueryTick=pg_query($vConn, $vSqlTick);
-                                        $tick=pg_fetch_array($vQueryTick, null, PGSQL_ASSOC);
-
-				endif;
+			  if($park['type'] == 'abb') $type = 'Abonnement';
+			  elseif($park['type'] == 'ticket') $type = 'Ticket';
 				echo '
 				<tr>
 					<td>'.$park['id'].'</td>
-					<td>'.$type.'</td>
+					<td>'.$type.' '.$park['typeabo'].'</td>
 					<td>'.$park['montant'].' €</td>
 					<td>'.$park['dateenregistrement'].'</td>
 					<td>';
-					if (strcmp($park['type'], 'ticket') == 0):
-						echo '<a href="tickets.php?id='.$tick['id'].'" class="btn">'.$tick['id'].', à '.$tick['nom'].'</a>';
-					endif;
+					if ($park['type'] == 'ticket')
+						echo '<a href="tickets.php?id='.$park['tickid'].'" class="btn">'.$park['tickid'].', à '.$park['parking'].'</a>';
 					echo '</td>
 					<td>';
-					if (strcmp($park['type'], 'abb') == 0):
-						echo '<a href="abonnements.php?id='.$abonne['id'].'" class="btn">'.$abonne['id'].', '.$abonne['prenom'].' '.$abonne['nom'].'</a>';
-					endif;
+					if ($park['type'] == 'abb')
+						echo '<a href="abonnements.php?id='.$park['aboid'].'" class="btn">'.$park['aboid'].', '.$park['prenom'].' '.$park['nom'].'</a>';
 					echo '
 					</td>
 				</tr>';
