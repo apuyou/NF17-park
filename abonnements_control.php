@@ -11,7 +11,7 @@ if($_GET['id'] == 'new') {
 	$date = pg_escape_string(date("Y-m-d"));
 	$vSql = "INSERT INTO park_abonnement (type, datesouscription, dateexpiration, abonne, place) VALUES ('$type', '$datesouscription', '$dateexpiration', '$abonne','$place');";
 	pg_query($vConn, $vSql);
-	$vSqlAbonne = "SELECT * FROM park_abonnement WHERE place='$place';";
+	$vSqlAbonne = "SELECT id FROM park_abonnement WHERE place='$place' ORDER BY id DESC LIMIT 1;";
 	$vQuery= pg_query($vConn, $vSqlAbonne);
 	$abb = pg_fetch_array($vQuery, null, PGSQL_ASSOC);
 	$id = $abb['id'];

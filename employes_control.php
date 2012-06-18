@@ -23,7 +23,7 @@ elseif(intval($_GET['id']) > 0){
 	$id = intval($_GET['id']);
 	$nom = pg_escape_string($_POST['nom']);
 	$prenom = pg_escape_string($_POST['prenom']);
-	$dateNaissance = pg_escape_string($_POST['datenaissance']);
+	$datenaissance = pg_escape_string($_POST['datenaissance']);
 	$vSql ="UPDATE park_personne SET nom='$nom', prenom='$prenom', datenaissance='$datenaissance' WHERE ID=$id;";
 	pg_query($vConn, $vSql);
 	$parking = $_POST['parking'];
