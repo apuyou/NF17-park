@@ -13,7 +13,7 @@ if(isset($_GET['id'])){
 	}
 	?>
 	<div class="span12">
-		<h1>Modifier un abonnement</h1>
+		<h1>Éditer un abonnement</h1>
 		<p></p>
 		<form class="form-horizontal" action="abonnements_control.php?id=<?php echo $_GET['id'] ?>" method="post">
 			<fieldset>
@@ -49,13 +49,13 @@ if(isset($_GET['id'])){
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="datesouscription">Date souscription</label>
+					<label class="control-label" for="datesouscription">Date de souscription</label>
 					<div class="controls">
 						<input class="input-xlarge" id="datesouscription" name="datesouscription" value="<?php echo $park['datesouscription'] ?>">
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="dateexpiration">Date Expiration</label>
+					<label class="control-label" for="dateexpiration">Date d'expiration</label>
 					<div class="controls">
 						<input class="input-xlarge" id="dateexpiration" name="dateexpiration" value="<?php echo $park['dateexpiration'] ?>">
 					</div>
@@ -123,8 +123,8 @@ else {
 				<tr>
 					<th>ID</th>
 					<th>Type</th>
-					<th>Date Souscription</th>
-					<th>Date Expiration</th>
+					<th>Date de souscription</th>
+					<th>Date d'expiration</th>
 					<th>Abonné</th>
 					<th>Place</th>
 					<th>Actions</th>
@@ -158,7 +158,7 @@ else {
 		</tbody>
 	</table>
 	<div class="form-actions">
-      <a href="abonnements.php?id=new"><button type="button" class="btn btn-primary" >Rajouter</button></a>
+      <a href="abonnements.php?id=new"><button type="button" class="btn btn-primary" >Ajouter</button></a>
     </div>
 </div>
 <?php
