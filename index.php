@@ -9,9 +9,13 @@ $stat = pg_fetch_array($vQuery);
 
 <div class="hero-unit">
   <h1>Bienvenue !</h1>
+  <p style="margin: 30px 0px;"><img src="img/park1.jpg" /><img src="img/park2.jpg" /><br />
+  <img src="img/park3.jpg" /><img src="img/park4.jpg" /></p>
   <p>Il y a actuellement <?php echo $stat['occupe'] ?> places occupées dans vos parkings.</p>
   <p><a class="btn btn-primary btn-large" href="statistiques.php">Toutes les statistiques &raquo;</a></p>
 </div>
-
+<div>
+  
+</div>
 <?php
 require("inc/footer.php");
