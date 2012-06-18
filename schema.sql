@@ -13,18 +13,13 @@ create table park_Personne(
 	type varchar(10) not null,
 	check (type IN ('employe', 'abonne'))
 );
-
-# vEmploye HERITAGE
 create view park_vEmploye AS SELECT * FROM park_Personne WHERE type = 'employe';
-
-# vAbonne HERITAGE
 create view park_vAbonne AS SELECT * FROM park_Personne WHERE type = 'abonne';
 
 create table park_Poste (
 	parking integer references park_Parking(id),
 	employe integer references park_Personne(id),
 	occupation varchar(20) not null
-	-- type de employe = employe (check) => mail
 );
 
 create table park_Etage (
